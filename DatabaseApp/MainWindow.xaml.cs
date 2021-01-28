@@ -29,14 +29,13 @@ namespace DatabaseApp
         {
             Person p = new Person(tbFirstName.Text, tbSurName.Text, tbPersonNumber.Text, dtDateofBirth.DisplayDate);
             Database d = Database.CreateOne;
-            
-            MessageBox.Show($"{d}");
+            d.databaze.Add(p.FirstName, p);
         }
     }
 
     class Database
     {
-        static Dictionary<string, Person> databaze;
+        public Dictionary<string, Person> databaze;
         private static readonly object locking = new object();
         static Database instance = null;
 
