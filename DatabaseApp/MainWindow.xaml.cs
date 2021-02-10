@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DatabaseApp.ViewModels;
 
 namespace DatabaseApp
 {
@@ -23,40 +24,10 @@ namespace DatabaseApp
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        private void butAddPerson_Click(object sender, RoutedEventArgs e)
-        {
-            Person p = new Person(tbFirstName.Text, tbSurName.Text, tbPersonNumber.Text, dtDateofBirth.DisplayDate);
-            Database d = Database.CreateOne;
-            d.databaze.Add(p.FirstName, p);
+            DataContext = new DatabaseViewModel();
         }
     }
 
-    class Database
-    {
-        public Dictionary<string, Person> databaze;
-        private static readonly object locking = new object();
-        static Database instance = null;
-
-        private Database()
-        {
-            databaze = new Dictionary<string, Person>();
-        }
-
-        public static Database CreateOne
-        {
-            get 
-            { 
-                lock(locking)
-                {
-                    if(instance == null)
-                    {
-                        instance = new Database();
-                    }
-                }
-                return instance;
-            }
-        }
-    }
+    
 }

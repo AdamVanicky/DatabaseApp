@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="butAddPerson" Content="Přidej" Click="butAddPerson_Click" HorizontalAlignment="Left" Margin="330,278,0,0" VerticalAlignment="Top" Width="151" Height="60"/>
-        <DatePicker x:Name="dtDateofBirth" HorizontalAlignment="Left" Margin="192,105,0,0" VerticalAlignment="Top" Width="119"/>
-        <TextBox x:Name="tbFirstName" HorizontalAlignment="Left" Height="23" Margin="192,59,0,0" TextWrapping="Wrap" Text="Jméno osoby" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbSurName" HorizontalAlignment="Left" Height="23" Margin="192,82,0,0" TextWrapping="Wrap" Text="Příjmení" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbPersonNumber" HorizontalAlignment="Left" Height="23" Margin="192,130,0,0" TextWrapping="Wrap" Text="Rodné číslo" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="butAddPerson" Content="Přidej" Command="{Binding SendCommand}" HorizontalAlignment="Left" Margin="330,278,0,0" VerticalAlignment="Top" Width="151" Height="60"/>
+        <DatePicker x:Name="dtDateofBirth" SelectedDate="{Binding DateofBirth}" HorizontalAlignment="Left" Margin="192,105,0,0" VerticalAlignment="Top" Width="119"/>
+        <TextBox x:Name="tbFirstName" HorizontalAlignment="Left" Height="23" Margin="192,59,0,0" TextWrapping="Wrap" Text="{Binding Firstname}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbSurName" HorizontalAlignment="Left" Height="23" Margin="192,82,0,0" TextWrapping="Wrap" Text="{Binding Surname}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbPersonNumber" HorizontalAlignment="Left" Height="23" Margin="192,130,0,0" TextWrapping="Wrap" Text="{Binding RodneCislo}" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>
