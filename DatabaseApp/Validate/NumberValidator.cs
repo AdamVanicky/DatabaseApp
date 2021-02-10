@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DatabaseApp.Validators;
+using System.Text.RegularExpressions;
 
 namespace DatabaseApp.Validate
 {
@@ -11,13 +12,14 @@ namespace DatabaseApp.Validate
     {
         public bool IsValid(string rc, DateTime dob)
         {
+            Regex r = null;
             DateTime dtCheck = new DateTime(1954, 1, 1);
             int value = DateTime.Compare(dob, dtCheck);
-            string[] str = rc.Split('/');
 
-            if (int.TryParse(str[0], out int i) == false || int.TryParse(str[1], out int j) == false) return false;
+            if (value > 0) r = new Regex("^[0-9]{6}/[0-9]{4}$");
+            else if(value < 0) r = new Regex("^[0-9]{6}/[0-9]{3}$");
 
-            if (value > 0 && str[1].Length == 4 || value <= 0 && str[1].Length == 3) return true;
+            if (!string.IsNullOrEmpty(rc) && r.IsMatch(rc)) return true;
 
             return false;
         }

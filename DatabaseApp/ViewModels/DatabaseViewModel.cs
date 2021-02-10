@@ -73,6 +73,21 @@ namespace DatabaseApp.ViewModels
             }
         }
 
+        private Person CreateProfile()
+        {
+            Person p;
+
+            p = new Person(new StringValidator(), new NumberValidator());
+
+            bool checkup = p.Checkup(Firstname, Surname, RodneCislo, DateofBirth);
+
+            if (checkup)
+            {
+                return p;
+            }
+            else return null;
+        }
+
         private static ICommand _sendCommand;
 
         public ICommand SendCommand
@@ -85,11 +100,16 @@ namespace DatabaseApp.ViewModels
                         () => {
                             Database d = Database.CreateOne;
 
-                            Person p = new Person(new StringValidator(), new NumberValidator());
+                            Person p = CreateProfile();
 
-                            bool b = p.Checkup(Firstname, Surname, RodneCislo, DateofBirth);
+                            if(p != null)
+                            {
+                                Debug.WriteLine(p.FirstName);
 
-                            if (b) d.databaze.Add(p.FirstName, p);
+                                d.databaze.Add(p.FirstName, p);
+                                MessageBox.Show("Person added");
+                            }
+                            else { MessageBox.Show("Error occured, wrong input!"); }
                         });
                 }
                 return _sendCommand;

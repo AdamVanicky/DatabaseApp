@@ -24,42 +24,14 @@ namespace DatabaseApp
 
         public bool Checkup(string firstname, string surname, string rodnecislo, DateTime dtbirth)
         {
-            bool stringOK;
-            bool intOk;
+            DateOfBirth = dtbirth;
+            bool nameOK = false, surnameOK = false, rodnecisloOK = false;
 
-            do
-            {
-                if (string.IsNullOrEmpty(firstname)) return false;
-                if (stringOK = stringValidator.IsValid(firstname))
-                {
-                    FirstName = firstname;
-                }
-            }
-            while (stringOK == false);
+            if (nameOK = stringValidator.IsValid(firstname)) FirstName = firstname;
+            if (surnameOK = stringValidator.IsValid(surname)) SurName = surname;
+            if (rodnecisloOK = numberValidator.IsValid(rodnecislo, dtbirth)) RodneCislo = rodnecislo;
 
-            stringOK = false;
-
-            do
-            {
-                if (string.IsNullOrEmpty(surname)) return false;
-                if (stringOK = stringValidator.IsValid(surname))
-                {
-                    SurName = surname;
-                }
-            }
-            while (stringOK == false);
-
-            do
-            {
-                if (string.IsNullOrEmpty(rodnecislo)) return false;
-                if (intOk = numberValidator.IsValid(rodnecislo, dtbirth))
-                {
-                    RodneCislo = rodnecislo;
-                }
-            }
-            while (intOk == false);
-
-            return true;
+            return (nameOK && surnameOK && rodnecisloOK);
         }
     }
 }

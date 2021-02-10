@@ -11,7 +11,7 @@ namespace DatabaseApp.Validate
     {
         public bool IsValid(string s)
         {
-            return s.Length > 1;
+            return (!string.IsNullOrEmpty(s) && s.Length > 1);
         }
     }
 }
