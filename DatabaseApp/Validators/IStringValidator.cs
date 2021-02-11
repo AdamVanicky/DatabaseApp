@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseApp.Validators
 {
-    interface IStringValidator
+    public interface IStringValidator
     {
         bool IsValid(string s);
     }

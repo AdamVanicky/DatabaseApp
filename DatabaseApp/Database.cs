@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseApp
 {
-    class Database
+    public class Database
     {
         public Dictionary<string, Person> databaze;
         private static readonly object locking = new object();

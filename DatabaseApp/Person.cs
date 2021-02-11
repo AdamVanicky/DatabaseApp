@@ -7,7 +7,7 @@ using DatabaseApp.Validators;
 
 namespace DatabaseApp
 {
-    class Person
+    public class Person
     {
         readonly IStringValidator stringValidator;
         readonly INumberValidator numberValidator;

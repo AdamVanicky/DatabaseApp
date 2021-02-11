@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace DatabaseApp.Validate
 {
-    class NumberValidator:INumberValidator
+    public class NumberValidator:INumberValidator
     {
         public bool IsValid(string rc, DateTime dob)
         {

@@ -7,7 +7,7 @@ using DatabaseApp.Validators;
 
 namespace DatabaseApp.Validate
 {
-    class StringValidator:IStringValidator
+    public class StringValidator:IStringValidator
     {
         public bool IsValid(string s)
         {
